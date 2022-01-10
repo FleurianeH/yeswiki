@@ -189,7 +189,8 @@ return [
     'BAZ_FORM_EDIT_NAME' => 'Intitulé',
 
     // condition checking field
-    "BAZ_FORM_CONDITIONSCHEKING_HINT" => "La condition doit respecter le format suivant (sans les `):{\\n}".
+    "BAZ_FORM_CONDITIONSCHEKING_HINT" => "CHAMP EXPERIMENTAL{\\n}".
+        "La condition doit respecter le format suivant (sans les `):{\\n}".
         " - `&` = ET{\\n}".
         " - `|` = OU{\\n}".
         " - `=` = EST ÉGALE À{\\n}".
