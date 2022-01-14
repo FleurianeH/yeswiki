@@ -24,19 +24,19 @@ class AclService
         $this->userManager = $userManager;
         $this->params = $params;
         $this->securityController = $securityController;
-        
+
         $this->cache = [];
         $this->checkOwnerReadAcl = !($this->params->has('baz_check_owner_acl_only_for_field_can_edit')
             && $this->params->get('baz_check_owner_acl_only_for_field_can_edit'));
     }
-    
+
     /**
      * @param string $tag
      * @param string $privilege
      * @param boolean $useDefaults
      * @return array [page_tag, privilege, list]
      */
-    public function load($tag, $privilege, $useDefaults = true) : ?array
+    public function load($tag, $privilege, $useDefaults = true): ?array
     {
         if (isset($this->cache[$tag][$privilege])) {
             return $this->cache[$tag][$privilege] ;
@@ -162,14 +162,19 @@ class AclService
             $user = $this->userManager->getLoggedUserName();
         }
 
+        // load acl
+        $acl = $this->load($tag, $privilege);
+
+        // empty acls is considered as no access
+        if ($acl === null) {
+            return false;
+        }
+
         // if current user is owner, return true. owner can do anything!
         if ($this->wiki->UserIsOwner($tag)) {
             return true;
         }
-
-        // load acl
-        $acl = $this->load($tag, $privilege);
-        // now check them
+        // now check the acls
         $access = $this->check($acl['list'], $user);
 
         return $access ;
@@ -272,7 +277,7 @@ class AclService
     /** create request for ACL
      * @return string $request request to append to request
      */
-    public function updateRequestWithACL():string
+    public function updateRequestWithACL(): string
     {
         // needed ACL
         $neededACL = ['*'];
@@ -332,11 +337,11 @@ class AclService
                 $newRequestStart .= ' AND ';
                 $newRequestStart .= ' list NOT LIKE "%!'.$acl.'%"';
             }
-            
+
             // add detection of '%'
             if (!empty($user)) {
                 $newRequestStart .= ') OR (';
-                
+
                 $newRequestStart .= '(list LIKE "%\\%%" AND list NOT LIKE "%!\\%%")';
                 $newRequestStart .= ' AND owner = _utf8\'' . $this->dbService->escape($userName) . '\'';
             }

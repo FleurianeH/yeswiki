@@ -1,4 +1,5 @@
 <?php
+
 /*vim: set expandtab tabstop=4 shiftwidth=4: */
 // +------------------------------------------------------------------------------------------------------+
 // | PHP version 5                                                                                        |
@@ -41,6 +42,9 @@ return [
     'NAME' => 'Nom',
     'SUBSCRIPTION' => 'Inscription',
     'UNKNOWN' => 'Inconnu',
+    'PAGES' => 'Pages',
+    'COMMENTS' => 'Commentaires',
+    'ANSWER' => 'Répondre',
 
     // wakka.php
     'INVALID_ACTION' => 'Action invalide',
@@ -90,6 +94,8 @@ return [
     'YW_CHANGE_NOTHING' => 'Ne rien modifier',
     'YW_CANNOT_CHANGE_ACLS' => 'Vous ne pouvez pas g&eacute;rer les permissions de cette page',
 
+    // handlers/page/claim.php
+    'YW_YOU_ARE_NOW_OWNER_OF_PAGE' => 'Vous êtes maintenant le propriétaire de cette page',
     // actions/editactionsacls.class.php
     'ACTION_RIGHTS' => 'Droits de l\'action',
     'SEE' => 'Voir',
@@ -99,6 +105,9 @@ return [
     'NEW_ACL_SUCCESSFULLY_SAVED_FOR_ACTION' => 'Nouvelle ACL enregistr&eacute;e avec succ&egrave;s pour l\'action',
     'EDIT_RIGHTS_FOR_ACTION' => '&Eacute;diter les droits de l\'action',
     'SAVE' => 'Enregistrer',
+    'YW_COMMENTS_ARE_NOW_OPEN' => 'Les commentaires ont été ouverts sur cette page',
+    'YW_COMMENTS_ARE_NOW_CLOSED' => 'Les commentaires ont été fermés sur cette page',
+    'YW_PROBLEM_WITH_ACLS_LIST' => 'Pas de groupe valide d\'indiqué pour ouvrir les commentaires',
 
     // actions/editgroups.class.php
     'DEFINITION_OF_THE_GROUP' => 'D&eacute;finition du groupe',
@@ -529,6 +538,20 @@ return [
     'CURRENT_VERSION' => 'Version actuelle',
     'RESTORE_REVISION' => 'Restaurer cette version',
     'DISPLAY_WIKI_CODE' => 'Afficher le code Wiki',
+
+    // handlers/show
+    'NOT_AUTORIZED_TO_READ_PAGE' => 'Vous n\'êtes pas autorisé à lire cette page',
+    'YW_ADD_COMMENT' => 'Ajouter votre commentaire',
+    'YW_WRITE_COMMENT_HERE' => 'Ecrire votre commentaire ici...',
+    'COMMENTS' => 'Commentaires',
+
+    // Comments
+    'COMMENT_PUBLISHED' => 'Commentaire publié !',
+    'COMMENT_EMPTY_NOT_SAVED' => 'Commentaire vide, pas de sauvegarde.',
+    'USER_MUST_BE_LOGGED_TO_COMMENT' => 'Vous devez vous identifier pour pouvoir publier un commentaire.',
+    'USER_NOT_ALLOWED_TO_COMMENT' => 'Vous n\'êtes pas dans un groupe autorisé à laisser des commentaires.',
+    'COMMENT_REMOVED' => 'Le commentaire a été supprimé.',
+    'NOT_AUTORIZED_TO_REMOVE_COMMENT' => 'Vous n\'êtes pas autorisé à supprimer ce commentaire.',
 
     // YesWiki
     'UNKNOWN_INTERWIKI' => 'interwiki inconnu',
